@@ -5,7 +5,11 @@ app = Flask(__name__)
 @app.route('/api/v1/network/status')
 def status():
     return jsonify({
+ hotfix/fix-device-name
+        "device": "Router-Core-Principal-Santiago",
+
         "device": "Router-Core-01",
+ develop
         "status": "online",
         "uptime": "99.99%",
         "version": "1.0.0"
