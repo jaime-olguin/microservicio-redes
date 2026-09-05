@@ -1,0 +1,36 @@
+name: CI/CD Pipeline Microservicio Redes
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout del repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar entorno Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Instalar dependencias
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Validar sintaxis del microservicio
+        run: |
+          python -m py_compile app.py
+
+      - name: Simular despliegue en entorno Cloud
+        run: |
+          echo "Simulando aprovisionamiento y despliegue del microservicio..."
+          echo "Microservicio validado exitosamente en entorno Cloud simulado."
