@@ -20,6 +20,14 @@ def interfaces():
         ]
     })
 
+@app.route('/api/v1/network/ping/<host>')
+def ping(host):
+    return jsonify({
+        "target": host,
+        "status": "reachable",
+        "latency_ms": 14.2
+    })
+
 if __name__ == '__main__':
     # Ejecuta la app en el puerto 5000
     app.run(host='0.0.0.0', port=5000)
